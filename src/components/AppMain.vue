@@ -19,10 +19,9 @@ export default {
             <AppCard class="card-character" v-for="cards in store.cardList" :key="cards.id" :poster_path="cards.poster_path"
                 :title="cards.title" :original_title="cards.original_title" :original_language="cards.original_language"
                 :vote_average="cards.vote_average" />
-
-            <AppCard class="card-character" v-for="cards in store.cardList" :key="cards.id" :poster_path="cards.poster_path"
-                :title="cards.title" :original_title="cards.original_title" :original_language="cards.original_language"
-                :vote_average="cards.vote_average" />
+            <AppCard class="card-character" v-for="cards in store.seriesList" :key="cards.id"
+                :poster_path="cards.poster_path" :title="cards.name" :original_title="cards.original_name"
+                :original_language="cards.original_language" :vote_average="cards.vote_average" />
 
         </div>
     </div>

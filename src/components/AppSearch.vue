@@ -10,7 +10,7 @@ export default {
     methods: {
 
         emitSearchEvent() {
-            this.$emit('performSearch', this.store.value);
+            this.$emit('performSearch');
         },
     },
 };

@@ -20,31 +20,30 @@ export default {
 
     requestDataFromApi() {
       axios
-        .get('https://api.themoviedb.org/3/search/movie?query=', {
+        .get('https://api.themoviedb.org/3/search/movie', {
           params: {
             api_key: '95f92b62827d48d27c5483a9415a484d',
             query: this.store.value,
           }
         })
         .then(response => (this.store.cardList = response.data.results));
+      axios
+        .get('https://api.themoviedb.org/3/search/tv', {
+          params: {
+            api_key: '95f92b62827d48d27c5483a9415a484d',
+            query: this.store.value,
+          }
+        })
+        .then(response => (this.store.seriesList = response.data.results));
     },
-    // requestDataTvSeries() {
-    //   axios
-    //     .get('https://api.themoviedb.org/3/search/tv?api_key=', {
-    //       params: {
-    //         api_key: '95f92b62827d48d27c5483a9415a484d',
-    //         query: this.store.value,
-    //       }
-    //     })
-    //     .then(response => (this.store.cardList = response.data.results));
-    // },
-  },
-  created() {
-    // qui fare la richiesta all'api
 
-  },
+    created() {
+      // qui fare la richiesta all'api
 
-}
+    },
+
+  }
+};
 
 
 
