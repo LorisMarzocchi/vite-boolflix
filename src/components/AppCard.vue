@@ -33,10 +33,19 @@ export default {
                 <h3>Titolo: {{ title }}</h3>
                 <h3>Titolo Originale: {{ original_title }}</h3>
                 <h3>Lingua: {{ original_language }} </h3>
-                <div class="vote">Voto:
-                    <font-awesome-icon icon="fa-solid fa-star" />
-
+                <div class="vote">
+                    Voto:
+                    <ul class="icon">
+                        <li v-for="i in 5" :key="i">
+                            <font-awesome-icon :icon="i <= vote_Average ? ['fas', 'star'] : ['far', 'star']" />
+                        </li>
+                    </ul>
                 </div>
+                <h3>Actor</h3>
+                <ul>
+                    <li></li>
+                    <!-- https://api.themoviedb.org/3/movie/165/credits?api_key=e99307154c6dfb0b4750f6603256716d& -->
+                </ul>
             </div>
         </div>
     </div>
@@ -82,8 +91,14 @@ img {
 }
 
 .vote {
-    height: 2rem;
+    height: 5rem;
     width: 100%;
+    display: flex;
+}
+
+.icon {
+    display: flex;
+    list-style: none;
 }
 
 i {
