@@ -78,7 +78,6 @@ export default {
                     <li class="actor" v-for="actor in actors" :key="actor">{{ actor }}
 
                     </li>
-                    <!-- https://api.themoviedb.org/3/movie/{id.movie}/credits?api_key=e99307154c6dfb0b4750f6603256716d& -->
                 </ul>
             </div>
         </div>
@@ -88,9 +87,15 @@ export default {
 
 
 <style lang="scss" scoped>
-.actor {
-    font-size: 1.2rem;
+// .actor {
+//     font-size: 1.2rem;
 
+// }
+
+.flip-card-back {
+    background-color: black;
+    color: white;
+    transform: rotateY(180deg);
 }
 
 .overview {
@@ -100,6 +105,11 @@ export default {
     line-height: 1.3rem;
     overflow: hidden;
     text-overflow: ellipsis;
+
+    .actor {
+        font-size: 1.2rem;
+
+    }
 
 }
 
@@ -149,14 +159,7 @@ img {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.far {
-    color: white;
-}
 
-.fas {
-    color: white;
-
-}
 
 .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
@@ -208,14 +211,8 @@ h2 {
     margin-bottom: 2rem;
 }
 
-.flip-card-front {
-    background-color: #bbb;
-    color: black;
-}
-
-.flip-card-back {
-    background-color: black;
-    color: white;
-    transform: rotateY(180deg);
-}
+// .flip-card-front {
+//     background-color: #bbb;
+//     color: black;
+// }
 </style>

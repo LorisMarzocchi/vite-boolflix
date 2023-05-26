@@ -37,7 +37,7 @@ export default {
         .then(response => (this.store.seriesList = response.data.results));
 
 
-
+      // https://api.themoviedb.org/3/genre/movie/list?api_key=[MY_KEY]&language=en-US
     },
 
   },
