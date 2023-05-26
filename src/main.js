@@ -1,6 +1,8 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 
+import LangFlag from "vue-lang-code-flags";
+
 /* import font awesome icon component */
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -15,4 +17,7 @@ import { far } from "@fortawesome/free-regular-svg-icons";
 library.add(fas);
 library.add(far);
 
-createApp(App).component("font-awesome-icon", FontAwesomeIcon).mount("#app");
+createApp(App)
+  .component("font-awesome-icon", FontAwesomeIcon)
+  .component("lang-flag", LangFlag)
+  .mount("#app");

@@ -35,14 +35,12 @@ export default {
           }
         })
         .then(response => (this.store.seriesList = response.data.results));
-    },
 
-    created() {
-      // qui fare la richiesta all'api
+
 
     },
 
-  }
+  },
 };
 
 

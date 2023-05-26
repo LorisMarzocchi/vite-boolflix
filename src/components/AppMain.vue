@@ -16,12 +16,24 @@ export default {
 <template>
     <div class="containerCard">
         <div class="container">
-            <AppCard class="card-character" v-for="cards in store.cardList" :key="cards.id" :poster_path="cards.poster_path"
-                :title="cards.title" :original_title="cards.original_title" :original_language="cards.original_language"
-                :vote_average="cards.vote_average" />
-            <AppCard class="card-character" v-for="cards in store.seriesList" :key="cards.id"
-                :poster_path="cards.poster_path" :title="cards.name" :original_title="cards.original_name"
-                :original_language="cards.original_language" :vote_average="cards.vote_average" />
+            <div class="container">
+
+            <h1>FILM</h1>
+
+                <AppCard class="card-character" v-for="cards in store.cardList" :id="cards.id" :key="cards.id"
+                    :poster_path="cards.poster_path" :title="cards.title" :original_title="cards.original_title"
+                    :original_language="cards.original_language" :vote_average="cards.vote_average" />
+            </div>
+            <div class="container">
+
+                <h1>SERIE</h1>
+                <AppCard class="card-character" v-for="cards in store.seriesList" :key="cards.id" :id="cards.id"
+                    :poster_path="cards.poster_path" :title="cards.name" :original_title="cards.original_name"
+                    :original_language="cards.original_language" :vote_average="cards.vote_average" />
+            </div>
+            <!-- <AppCard class="card-character" v-for="cards in store.creditsList" :key="cards.id" :id="cards.id"
+                                                                                    :poster_path="cards.poster_path" :title="cards.name" :original_title="cards.original_name"
+                                                                                    :original_language="cards.original_language" :vote_average="cards.vote_average" /> -->
 
         </div>
     </div>
@@ -31,14 +43,16 @@ export default {
 .container {
     display: flex;
     flex-wrap: wrap;
+    width: 80%;
+    margin: auto;
 }
 
 .containerCard {
+    background-color: #434343;
     padding: 20px;
     height: 100%;
     margin: auto;
-    width: 80%;
-    background-color: white;
+
 }
 
 .countCard {
