@@ -18,6 +18,7 @@ export default {
         original_language: String,
         vote_average: Number,
         id: Number,
+        overview: String,
     },
     created() {
         this.fetchActors();
@@ -39,13 +40,8 @@ export default {
                         this.actors = ['N/A'];
                     }
                 })
-                .catch((error) => {
-                    if (error.response && error.response.status === 404) {
-                        this.actors = ['N/A'];
-                    } else {
-                        console.log(error);
-
-                    }
+                .catch(() => {
+                    this.actors = ['N/A'];
                 });
 
         },
@@ -60,10 +56,10 @@ export default {
                     alt="">
             </div>
             <div class="flip-card-back">
-                <h3>Titolo: {{ title }}</h3>
-                <h3>Titolo Originale: {{ original_title }}</h3>
-                <lang-flag :iso="original_language" :squared="false" />
-                <span class="lang-text">{{ original_language }}</span>
+                <h2>Titolo: {{ title }}</h2>
+                <h2>Titolo Originale: {{ original_title }}</h2>
+                <lang-flag class="language" :iso="original_language" :squared="false" />
+                <span class="lang-text">language: {{ original_language }}</span>
                 <div class="vote">
                     Voto:
                     <ul class="icon">
@@ -73,9 +69,13 @@ export default {
                         </li>
                     </ul>
                 </div>
-                <h3>Actor</h3>
+                <div class="overview">
+                    {{ overview }}
+
+                </div>
+                <h2>Actor</h2>
                 <ul>
-                    <li v-for="actor in actors" :key="actor">{{ actor }}
+                    <li class="actor" v-for="actor in actors" :key="actor">{{ actor }}
 
                     </li>
                     <!-- https://api.themoviedb.org/3/movie/{id.movie}/credits?api_key=e99307154c6dfb0b4750f6603256716d& -->
@@ -88,22 +88,47 @@ export default {
 
 
 <style lang="scss" scoped>
-.lang-icon-undefined {
+.actor {
+    font-size: 1.2rem;
+
+}
+
+.overview {
+    height: 4rem;
+    font-size: 1.2rem;
+    padding-inline: 1rem;
+    line-height: 1.3rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.language {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.flag-icon-undefined {
     display: none;
 }
 
 .lang-text {
+    margin-top: 2rem;
     display: none;
+    font-size: 2rem;
 }
 
-.lang-icon-undefined+.lang-text {
+.flag-icon-undefined+.lang-text {
     display: inline;
+    color: white;
+
 }
 
 .flip-card {
     background-color: transparent;
-    width: calc((100% / 4) - 40px);
-    height: 700px;
+    width: calc((100% / 3) - 40px);
+    height: 750px;
     padding: 20px;
     margin: 20px;
     perspective: 1000px;
@@ -138,13 +163,16 @@ img {
 }
 
 .vote {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    padding-inline: 2rem;
     height: 5rem;
-    width: 100%;
     display: flex;
 }
 
 .icon {
     display: flex;
+    margin-inline: 1rem;
 }
 
 li {
@@ -153,22 +181,31 @@ li {
 }
 
 i {
+    margin: 1rem;
     font-size: 2rem;
     color: white;
 }
 
+.flip-card-back {
+
+    overflow-y: auto;
+}
+
+
 .flip-card-front,
 .flip-card-back {
     position: absolute;
+
     width: 100%;
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
 
-h3 {
+h2 {
     padding-inline: 10px;
-    margin-top: 4rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .flip-card-front {
